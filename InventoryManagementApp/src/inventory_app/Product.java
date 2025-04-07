@@ -64,9 +64,10 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
-    public double setPrice() {
-        return price;
-    }
+
+//    public double setPrice() {
+//        return price;
+//    }
 
     public String getCategory() {
         return category;
@@ -88,11 +89,12 @@ public class Product {
         return lastQuantity;
     }
 
+//    public int setLastQuantity() {
+//        return lastQuantity;
+//    }
+
     public int setLastQuantity(int lastQuantity) {
         this.lastQuantity = lastQuantity;
-        return lastQuantity;
-    }
-    public int setLastQuantity() {
         return lastQuantity;
     }
 
