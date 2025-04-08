@@ -3,34 +3,35 @@ package inventory_app;
 import java.util.Date;
 
 public class Product {
-    private int productId;
+    private int product;
     private String description;
     private String unit;
-    private int unitQuantity;
+    private int unitQty;
     private double price;
     private String category;
     private Date date;
-    private int lastQuantity;
+    private int lastQty;
 
-    public Product(int productId, String description, String unit, int unitQuantity, double price, String category, Date date, int lastQuantity) {
-        this.productId = productId;
+    public Product(int product, String description, String unit, int unitQty, double price, String category, Date date, int lastQty) {
+        this.product = product;
         this.description = description;
         this.unit = unit;
-        this.unitQuantity = unitQuantity;
+        this.unitQty = unitQty;
         this.price = price;
         this.category = category;
         this.date = date;
+        this.lastQty = lastQty;
     }
 
     public Product() {
     }
 
-    public int getProductId() {
-        return productId;
+    public int getProduct() {
+        return product;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setProduct(int product) {
+        this.product = product;
     }
 
     public String getDescription() {
@@ -49,12 +50,12 @@ public class Product {
         this.unit = unit;
     }
 
-    public int getUnitQuantity() {
-        return unitQuantity;
+    public int getUnitQty() {
+        return unitQty;
     }
 
-    public void setUnitQuantity(int unitQuantity) {
-        this.unitQuantity = unitQuantity;
+    public void setUnitQty(int unitQty) {
+        this.unitQty = unitQty;
     }
 
     public double getPrice() {
@@ -63,9 +64,6 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-    public double setPrice() {
-        return price;
     }
 
     public String getCategory() {
@@ -84,29 +82,24 @@ public class Product {
         this.date = date;
     }
 
-    public int getLastQuantity() {
-        return lastQuantity;
+    public int getLastQty() {
+        return lastQty;
     }
 
-    public int setLastQuantity(int lastQuantity) {
-        this.lastQuantity = lastQuantity;
-        return lastQuantity;
-    }
-    public int setLastQuantity() {
-        return lastQuantity;
+    public void setLastQty(int lastQty) {
+        this.lastQty = lastQty;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
-                "productId=" + productId +
-                ", description='" + description + '\'' +
-                ", unit=" + unit +
-                ", unitQuantity=" + unitQuantity +
-                ", price=" + price +
-                ", category='" + category + '\'' +
-                ", date=" + date +
-                ", lastQuantity=" + lastQuantity +
-                '}';
+        return
+                "product = " + product +
+                ", description = " + description +
+                ", unit = " + unit +
+                ", unitQty = " + unitQty +
+                ", price = " + price +
+                ", category = " + category +
+                ", date = " + date +
+                ", lastQty = " + lastQty;
     }
 }
