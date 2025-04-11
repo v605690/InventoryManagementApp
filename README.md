@@ -13,3 +13,6 @@ Product Management: Owners can add new products to their inventory, update produ
 The project utilizes object-oriented programming principles, encapsulation, and file handling to efficiently manage stock-related tasks. It helps owners maintain accurate inventory records, make informed business decisions, and facilitate smooth interactions with suppliers and customers.
 
 Please note that the project is designed as a command-line application, and further improvements and enhancements can be made to extend its functionality and create a user-friendly graphical user interface (GUI) if required.
+
+
+![Alt text](https://github.com/user-attachments/assets/2f57f0db-bc21-4dee-a3b5-f9d4ab2c9d83)
