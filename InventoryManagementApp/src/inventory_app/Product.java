@@ -1,31 +1,32 @@
 package inventory_app;
 
-import java.util.Date;
-
 public class Product {
+
+    // Instance variables with private access modifier for encapsulation
     private int product;
     private String description;
     private String unit;
-    private int unitQty;
+    private String unitQty;
     private double price;
-    private String category;
-    private Date date;
+    private String date;
     private int lastQty;
 
-    public Product(int product, String description, String unit, int unitQty, double price, String category, Date date, int lastQty) {
+    // Product Constructor fully qualified
+    public Product(int product, String description, String unit, String unitQty, double price, String date, int lastQty) {
         this.product = product;
         this.description = description;
         this.unit = unit;
         this.unitQty = unitQty;
         this.price = price;
-        this.category = category;
         this.date = date;
         this.lastQty = lastQty;
     }
 
+    // Product Constructor
     public Product() {
     }
 
+    // Getter & Setter methods
     public int getProduct() {
         return product;
     }
@@ -50,11 +51,11 @@ public class Product {
         this.unit = unit;
     }
 
-    public int getUnitQty() {
+    public String getUnitQty() {
         return unitQty;
     }
 
-    public void setUnitQty(int unitQty) {
+    public void setUnitQty(String unitQty) {
         this.unitQty = unitQty;
     }
 
@@ -66,19 +67,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getCategory() {
-        return category;
+    public String getDate() {
+        return date;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public java.sql.Date getDate() {
-        return (java.sql.Date) date;
-    }
-
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -90,6 +83,7 @@ public class Product {
         this.lastQty = lastQty;
     }
 
+    // ToString method
     @Override
     public String toString() {
         return
@@ -98,7 +92,6 @@ public class Product {
                 ", unit = " + unit +
                 ", unitQty = " + unitQty +
                 ", price = " + price +
-                ", category = " + category +
                 ", date = " + date +
                 ", lastQty = " + lastQty;
     }

@@ -5,13 +5,16 @@ import java.util.Scanner;
 
 public class Inventory_App {
     public static void main(String[] args) {
+        // Create new jbdcConnector  and lifeCycleInventoryManagement objects
         JDBCConnector jdbcConnector = new JDBCConnector();
         LifeCycleInventoryManagement lifeCycleInventoryManagement = new LifeCycleInventoryManagement(jdbcConnector);
+        // Set up a scanner class to parse and retrieving input from various sources, such as the console, files and strings
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             try {
-                System.out.println("Welcome to Inventory Management System");
+                System.out.println("---------------------------------------");
+                System.out.println("Welcome To HK Inventory Management System");
                 System.out.println("Please enter your choice");
                 System.out.println("---------------------------------------");
                 System.out.println("1. Add Product");
@@ -21,19 +24,18 @@ public class Inventory_App {
                 System.out.println("5. Exit");
 
                 int choice = safeInputInt(scanner, "Enter your choice: ");
-
+                // Set up a switch statement to rotate though the cases
                 switch (choice) {
                     case 1:
                         int productId = safeInputInt(scanner, "Enter product ID: ");
                         String description = safeInputString(scanner, "Enter product description: ");
                         scanner.nextLine();
                         String unit = safeInputString(scanner, "Enter product unit: ");
-                        int unitQuantity = safeInputInt(scanner, "Enter product unit quantity: ");
+                        String unitQuantity = safeInputString(scanner, "Enter product unit quantity: ");
                         double price = safeInputDouble(scanner, "Enter product price: ");
-                        String category = safeInputString(scanner, "Enter product category: ");
-                        java.sql.Date date = safeInputDate(scanner, "Enter product date: ");
+                        String date = safeInputString(scanner, "Enter product date: ");
                         int lastQuantity = safeInputInt(scanner, "Enter product last quantity: ");
-                        Product product = new Product(productId, description, unit, unitQuantity, price, category, date, lastQuantity);
+                        Product product = new Product(productId, description, unit, unitQuantity, price, date, lastQuantity);
                         lifeCycleInventoryManagement.addProduct(product);
                         System.out.println("Product added successfully");
                         break;
@@ -41,12 +43,11 @@ public class Inventory_App {
                         int productIdToUpdate = safeInputInt(scanner, "Enter product ID: ");
                         String descriptionToUpdate = safeInputString(scanner, "Enter product description: ");
                         String unitToUpdate = safeInputString(scanner, "Enter product unit: ");
-                        int unitQuantityToUpdate = safeInputInt(scanner, "Enter product unit quantity: ");
+                        String unitQuantityToUpdate = safeInputString(scanner, "Enter product unit quantity: ");
                         double priceToUpdate = safeInputDouble(scanner, "Enter product price: ");
-                        String categoryToUpdate = safeInputString(scanner, "Enter product category: ");
-                        java.sql.Date dateToUpdate = java.sql.Date.valueOf(scanner.next());
+                        String dateToUpdate = safeInputString(scanner, "Enter last date: ");
                         int lastQuantityToUpdate = safeInputInt(scanner, "Enter product last quantity: ");
-                        Product productToUpdate = new Product(productIdToUpdate, descriptionToUpdate, unitToUpdate, unitQuantityToUpdate, priceToUpdate, categoryToUpdate, dateToUpdate, lastQuantityToUpdate);
+                        Product productToUpdate = new Product(productIdToUpdate, descriptionToUpdate, unitToUpdate, unitQuantityToUpdate, priceToUpdate, dateToUpdate, lastQuantityToUpdate);
                         lifeCycleInventoryManagement.updateProduct(productToUpdate);
                         System.out.println("Product updated successfully");
                         break;
@@ -60,7 +61,9 @@ public class Inventory_App {
                         if (inventories.isEmpty()) {
                             System.out.println("No inventories found");
                         } else {
-                            System.out.println("Product ID\tDescription\tUnit\tUnit Quantity\tPrice\tCategory\tDate\tLast Quantity");
+                            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
+                            System.out.println("PRODUCT ID              \tDESCRIPTION                         \tUNIT      \tUNIT QUANTITY     \tPRICE      \tDATE    \tLAST QUANTITY");
+                            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
                             for (Product inventory : inventories) {
                                 System.out.println(inventory.toString());
                             }
@@ -78,7 +81,7 @@ public class Inventory_App {
             }
         }
     }
-
+    // Set up four scanner methods
     private static int safeInputInt(Scanner scanner, String prompt) {
         while (true) {
             System.out.println(prompt);

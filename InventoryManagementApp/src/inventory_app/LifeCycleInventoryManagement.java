@@ -14,18 +14,17 @@ public class LifeCycleInventoryManagement {
         this.jdbcConnector = jdbcConnector;
     }
     public void addProduct(Product product) {
-        String sql = "INSERT INTO inventory_db.product (product, description, unit, unit_qty, current_price, web_category, last_date, last_qty) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO inventory_db.product (product, description, unit, unit_qty, current_price, last_date, last_qty) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = jdbcConnector.getconnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, product.getProduct());
             preparedStatement.setString(2, product.getDescription());
             preparedStatement.setString(3, product.getUnit());
-            preparedStatement.setInt(4, product.getUnitQty());
+            preparedStatement.setString(4, product.getUnitQty());
             preparedStatement.setDouble(5, product.getPrice());
-            preparedStatement.setString(6, product.getCategory());
-            preparedStatement.setDate(7, product.getDate());
-            preparedStatement.setInt(8, product.getLastQty());
+            preparedStatement.setString(6, product.getDate());
+            preparedStatement.setInt(7, product.getLastQty());
             preparedStatement.executeUpdate();
             
         } catch (SQLException e) {
@@ -45,10 +44,9 @@ public class LifeCycleInventoryManagement {
                     product.setProduct(resultSet.getInt("product"));
                     product.setDescription(resultSet.getString("description"));
                     product.setUnit(resultSet.getString("unit"));
-                    product.setUnitQty(resultSet.getInt("unit_qty"));
+                    product.setUnitQty(resultSet.getString("unit_qty"));
                     product.setPrice(resultSet.getDouble("current_price"));
-                    product.setCategory(resultSet.getString("web_category"));
-                    product.setDate(resultSet.getDate("last_date"));
+                    product.setDate(resultSet.getString("last_date"));
                     product.setLastQty(resultSet.getInt("last_qty"));
                     inventories.add(product);
                 }
@@ -59,16 +57,15 @@ public class LifeCycleInventoryManagement {
     }
 
     public void updateProduct(Product product) {
-        String sql = "UPDATE inventory_db.product SET description = ?, unit = ?, unit_qty = ?, current_price = ?, web_category = ?, last_date = ?, last_qty = ? WHERE product_id = ?";
+        String sql = "UPDATE inventory_db.product SET description = ?, unit = ?, unit_qty = ?, current_price = ?, last_date = ?, last_qty = ? WHERE product_id = ?";
 
         try (Connection connection = jdbcConnector.getconnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, product.getDescription());
             preparedStatement.setString(2, product.getUnit());
-            preparedStatement.setInt(3, product.getUnitQty());
+            preparedStatement.setString(3, product.getUnitQty());
             preparedStatement.setDouble(4, product.getPrice());
-            preparedStatement.setString(5, product.getCategory());
-            preparedStatement.setDate(6, product.getDate());
+            preparedStatement.setString(6, product.getDate());
             preparedStatement.setInt(7, product.getLastQty());
             preparedStatement.setInt(8, product.getProduct());
 
