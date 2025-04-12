@@ -20,8 +20,9 @@ public class Inventory_App {
                 System.out.println("1. Add Product");
                 System.out.println("2. Update Product");
                 System.out.println("3. Delete Product");
-                System.out.println("4. View All Products");
-                System.out.println("5. Exit");
+                System.out.println("4. Get Meta Data");
+                System.out.println("5. View All Products");
+                System.out.println("6. Exit");
 
                 int choice = safeInputInt(scanner, "Enter your choice: ");
                 // Set up a switch statement to rotate though the cases
@@ -57,19 +58,23 @@ public class Inventory_App {
                         System.out.println("Product deleted successfully");
                         break;
                     case 4:
-                        List<Product> inventories = new LifeCycleInventoryManagement(jdbcConnector).getAllInventories();
+                        System.out.println("Product ID  \tPRODUCT   \tDESCRIPTION   \tUNIT  \tUNIT QUANTITY \tPRICE \tDATE  \tLAST QUANTITY");
+                        lifeCycleInventoryManagement.getMetaData();
+                        break;
+                    case 5:
+                        List<Product> inventories = lifeCycleInventoryManagement.getAllInventories();
                         if (inventories.isEmpty()) {
                             System.out.println("No inventories found");
                         } else {
                             System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
-                            System.out.println("PRODUCT ID              \tDESCRIPTION                         \tUNIT      \tUNIT QUANTITY     \tPRICE      \tDATE    \tLAST QUANTITY");
+                            System.out.println("PRODUCT              \tDESCRIPTION                         \tUNIT      \tUNIT QUANTITY     \tPRICE      \tDATE    \tLAST QUANTITY");
                             System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
                             for (Product inventory : inventories) {
                                 System.out.println(inventory.toString());
                             }
                         }
                         break;
-                    case 5:
+                    case 6:
                         System.out.println("Exiting Inventory Management System");
                         scanner.close();
                         return;
@@ -100,7 +105,7 @@ public class Inventory_App {
             if (scanner.hasNextDouble()) {
                 return scanner.nextDouble();
             } else {
-                System.out.println("Invalid input.  Please enter a valid decmial number.");
+                System.out.println("Invalid input.  Please enter a valid decimal number.");
                 scanner.nextLine();
             }
         }

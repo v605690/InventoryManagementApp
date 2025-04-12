@@ -32,6 +32,24 @@ public class LifeCycleInventoryManagement {
         }
     }
 
+    public void getMetaData() {
+        String sql = "SELECT * FROM inventory_db.product";
+        try (Connection connection = jdbcConnector.getconnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                var metaData = resultSet.getMetaData();
+                for (int i = 1; i<=metaData.getColumnCount(); i++) {
+                    System.out.print(resultSet.getObject(i) + "  ");
+                }
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<Product> getAllInventories() {
            List<Product> inventories = new ArrayList<>();
            String sql = "SELECT * FROM inventory_db.product";
@@ -55,6 +73,12 @@ public class LifeCycleInventoryManagement {
            }
         return inventories;
     }
+
+//    var metaData = resultSet.getMetaData();
+//                    for (int i = 1; i <= metaData.getColumnCount(); i++) {
+//        System.out.println(resultSet.getObject(i) + " ");
+//    }
+//                    System.out.println();
 
     public void updateProduct(Product product) {
         String sql = "UPDATE inventory_db.product SET description = ?, unit = ?, unit_qty = ?, current_price = ?, last_date = ?, last_qty = ? WHERE product_id = ?";
