@@ -8,7 +8,7 @@ Key Features:
 
 Supplier Management: The system enables owners to manage adding new products to the database or updating the details of existing inventory.
 
-Product Management: Owners can add new products to their inventory, update product details such as price and quantity, and monitor the current stock status of each product. Each product is identified by a unique product ID, and its name, price, and quantity are recorded.
+Product Management: Along with adding new products to the inventory, you can also update product details such as price and quantity, and monitor the current stock status of each product. Each product is identified by a unique product ID, and its name, price, and quantity are recorded.
 
 The project utilizes object-oriented programming principles, encapsulation, and file handling to efficiently manage stock-related tasks. It helps owners maintain accurate inventory records, make informed business decisions, and facilitate smooth interactions with suppliers and customers.
 
