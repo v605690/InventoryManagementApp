@@ -5,22 +5,23 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+// NIKITA: Changes are done to enable CSVController functionality as a part of the application
 public class CSVController {
-    public static void main(String[] args) {
-
-        CSVController csvController = new CSVController();
-        csvController.readCSV();
-    }
+//    public static void main(String[] args) {
+//        CSVController csvController = new CSVController();
+//        csvController.readCSV();
+//    }
 
     // Set up a new management object from LifeCycleInventoryManagement class
-    LifeCycleInventoryManagement management = new LifeCycleInventoryManagement(new JDBCConnector());
-    // readCSV method created
-    public void readCSV() {
+//    LifeCycleInventoryManagement management = new LifeCycleInventoryManagement();
 
+    // readCSV method created
+    public List<Product> readCSV(String filePath) {
         ArrayList<Product> products = new ArrayList<>();
         // Set up file path for the csv file
-        String filePath = "/Users/v605690/Java-Projects/InventoryManagementApp/inventory.csv";
+//        String filePath = "/Users/v605690/Java-Projects/InventoryManagementApp/inventory.csv";
         // Create the BufferedReader using try-with-resources
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 
@@ -40,10 +41,12 @@ public class CSVController {
             e.printStackTrace();
         }
         // Set up a for loop to iterate over the product array calling the addProduct method
-        for(Product product : products) {
-           management.addProduct(product);
-        }
+//        for (Product product : products) {
+//            management.addProduct(product);
+//        }
+        return products;
     }
+
     // Create mapper method to retrieve the index from array
     private Product mapper(String[] data) {
         Product product = new Product();

@@ -88,11 +88,11 @@ public class Product {
     public String toString() {
         return
                 "product = " + product +
-                ", description = " + description +
-                ", unit = " + unit +
-                ", unitQty = " + unitQty +
-                ", price = " + price +
-                ", date = " + date +
-                ", lastQty = " + lastQty;
+                        ", description = " + description +
+                        ", unit = " + unit +
+                        ", unitQty = " + unitQty +
+                        ", price = " + price +
+                        ", date = " + date +
+                        ", lastQty = " + lastQty;
     }
 }
